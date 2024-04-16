@@ -1,3 +1,4 @@
+
 export class Comentario {
     constructor(
       public id_solicitud?: number | null,
