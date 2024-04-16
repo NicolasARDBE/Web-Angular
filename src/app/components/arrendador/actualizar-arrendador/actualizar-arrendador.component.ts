@@ -2,12 +2,13 @@ import { Component, NgModule } from '@angular/core';
 import { ArrendadorService } from '../../../services/arrendador.service';
 import { CommonModule } from '@angular/common';
 import { Arrendador } from '../../../models/Arrendador';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-actualizar-arrendador',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './actualizar-arrendador.component.html',
   styleUrl: './actualizar-arrendador.component.css'
 })

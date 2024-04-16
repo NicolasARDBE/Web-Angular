@@ -1,0 +1,12 @@
+<form (ngSubmit)="insertarArrendador()">
+    Id<br/>
+    <input type = 'text' name = 'id' [(ngModel)] = "arrendador.id_arrendador" /><br/>
+    Nombres<br/>
+    <input type = 'text' name = 'nombres' [(ngModel)] = "arrendador.nombre" /><br/>
+    Apellidos<br/>
+    <input type = 'text' name = 'apellidos'  [(ngModel)] = "arrendador.apellido" /><br/>
+    Correo<br/>
+    <input type = 'text' name = 'correo'  [(ngModel)] = "arrendador.correo" /><br/>
+
+    <input type = 'submit'/>
+</form>

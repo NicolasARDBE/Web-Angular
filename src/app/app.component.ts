@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ArrendadorService } from './services/arrendador.service';
 import { ListArrendadorComponent } from "./components/arrendador/list-arrendador/list-arrendador.component";
 import { ActualizarArrendadorComponent } from "./components/arrendador/actualizar-arrendador/actualizar-arrendador.component";
+import { InsertarArrendadorComponent } from "./components/arrendador/insertar-arrendador/insertar-arrendador.component";
 //import { DatosestudiantesComponent } from "./components/datosestudiantes/datosestudiantes.component";
 //import { DatosclaseComponent } from "./components/datosclase/datosclase.component";
 
@@ -12,7 +13,7 @@ import { ActualizarArrendadorComponent } from "./components/arrendador/actualiza
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, CommonModule, ListArrendadorComponent, ActualizarArrendadorComponent]
+    imports: [RouterOutlet, CommonModule, ListArrendadorComponent, ActualizarArrendadorComponent, InsertarArrendadorComponent]
 })
 export class AppComponent {
   title = 'WebAngular';
