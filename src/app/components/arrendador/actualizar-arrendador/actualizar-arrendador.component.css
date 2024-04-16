@@ -1,10 +1,28 @@
 .form-group {
-    margin-bottom: 15px; /* Espaciado entre cada grupo de etiqueta e input */
-  }
-  
-  label {
-    display: inline-block; /* Asegura que las etiquetas ocupen el mismo ancho */
-    width: 100px; /* Ancho fijo para las etiquetas (ajusta según necesites) */
-    text-align: right; /* Alineación del texto a la derecha */
-    margin-right: 10px; /* Espaciado entre la etiqueta y el input */
-  }
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
