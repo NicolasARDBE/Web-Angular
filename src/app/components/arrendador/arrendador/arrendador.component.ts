@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Arrendador } from '../../../models/Arrendador';
+import { Arrendador } from '../../../models/arrendador';
 
 @Component({
   selector: 'app-arrendador',
