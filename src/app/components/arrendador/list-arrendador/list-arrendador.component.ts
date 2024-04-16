@@ -13,7 +13,7 @@ import { RouterOutlet } from '@angular/router';
   imports: [CommonModule, RouterOutlet]
 })
 
-export class DatosestudiantesComponent {
+export class ListArrendadorComponent {
 
   arrendadores: Arrendador[] = [];
   arrendador: Arrendador;
