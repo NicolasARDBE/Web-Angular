@@ -27,4 +27,13 @@ export class ArrendadorService {
     return axios.post<Arrendador>('http://localhost:8080/arrendadores/crearArrendador', arrendador).then(response => response.data);
   }
 
+  eliminarArrendador(id: number): Promise<void> {
+    return axios.delete<void>(`http://localhost:8080/arrendadores/${id}`).then(response => {
+      console.log('Arrendador eliminado correctamente');
+    }).catch(error => {
+      console.error('Error al eliminar arrendador:', error);
+      throw error; // Puedes manejar el error según tus necesidades
+    });
+  }
+
 }
