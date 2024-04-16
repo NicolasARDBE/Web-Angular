@@ -1,6 +1,7 @@
-<h2>Listar de Arrendadores</h2>
 <ul>
-  <li *ngFor="let arrendador of arrendadores">
-    {{ arrendador.nombre }} - {{ arrendador.apellido }}
-  </li>
+    <li *ngFor = "let pipol of arrendadores">
+        {{ arrendador.nombre }} {{ arrendador.apellido }} --> <a href = "" (click)="cambiarPipol($event, pipol)">Ir</a>
+    </li>
 </ul>
+
+<p>Prueba</p>

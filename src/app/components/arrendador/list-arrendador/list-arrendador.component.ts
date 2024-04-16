@@ -3,24 +3,42 @@ import { Arrendador } from '../../../models/Arrendador';
 import { ArrendadorService } from '../../../services/arrendador.service';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ArrendadorComponent } from '../arrendador/arrendador.component';
+
 
 @Component({
-    selector: 'app-list-arrendador',
-    standalone: true,
-    templateUrl: './list-arrendador.component.html',
-    styleUrl: './list-arrendador.component.css',
-    imports: [CommonModule, RouterOutlet, ArrendadorComponent]
+  selector: 'app-list-arrendador',
+  templateUrl: './list-arrendador.component.html',
+  standalone: true,
+  styleUrls: ['./list-arrendador.component.css'],
+  imports: [CommonModule, RouterOutlet]
 })
-export class ListArrendadorComponent {
+
+export class DatosestudiantesComponent {
 
   arrendadores: Arrendador[] = [];
+  arrendador: Arrendador;
 
-  constructor(private ArrendadorService: ArrendadorService){}
+  constructor(
+    private arrendadorService: ArrendadorService,
+  ){
+    this.arrendador = new Arrendador();
+  }
 
   ngOnInit(): void {
-    this.ArrendadorService.getArrendadores().subscribe(arrendadores => {
-      this.arrendadores = arrendadores;
-      console.log(this.arrendadores);
-    });}
+    this.cargarArrendadorService();
+  }
+
+  cargarArrendadorService(){
+    // Externo
+    this.arrendadorService.getPipolsExterno().then((post) => {
+      this.arrendadores = post;
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+
+  cambiarPipol( event: Event, arrendador: Arrendador ){
+    event.preventDefault();
+    this.arrendador = arrendador;
+  }
 }
