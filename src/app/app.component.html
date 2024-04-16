@@ -8,6 +8,19 @@
 </head>
 <body>
     <div class="container">
+        <nav>
+            <ul>
+                <li><a routerLink="/">Inicio</a></li>
+                <li><a routerLink="/fincas">Ver Fincas</a></li>
+                <!-- Añade más enlaces según tus rutas definidas -->
+            </ul>
+        </nav>
+
+        <!-- RouterOutlet es donde se renderizarán los componentes de las rutas -->
+        <router-outlet></router-outlet>
+
+        <!-- Si aún necesitas cargar estos componentes directamente sin enrutamiento, mantenlos aquí, de lo contrario, quítalos para usar la navegación basada en rutas -->
+        
         <div class="section">
             <h1>Lista de Arrendadores</h1>
             <app-list-arrendador></app-list-arrendador>
@@ -24,6 +37,7 @@
             <h1>Eliminar Arrendador</h1>
             <app-eliminar-arrendador></app-eliminar-arrendador>
         </div>
+        
     </div>
 </body>
 </html>
