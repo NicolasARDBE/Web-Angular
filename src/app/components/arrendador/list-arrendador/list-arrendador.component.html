@@ -1,6 +1,6 @@
 <ul>
-    <li *ngFor = "let pipol of arrendadores">
-        {{ arrendador.nombre }} {{ arrendador.apellido }} --> <a href = "" (click)="cambiarPipol($event, pipol)">Ir</a>
+    <li *ngFor = "let arrendador of arrendadores">
+        {{ arrendador.nombre }} {{ arrendador.apellido }}
     </li>
 </ul>
 

@@ -31,13 +31,14 @@ export class DatosestudiantesComponent {
   cargarArrendadorService(){
     // Externo
     this.arrendadorService.getPipolsExterno().then((post) => {
+      console.log(post);
       this.arrendadores = post;
     }).catch((error) => {
       console.error(error);
     });
   }
 
-  cambiarPipol( event: Event, arrendador: Arrendador ){
+  cambiarArrendador( event: Event, arrendador: Arrendador ){
     event.preventDefault();
     this.arrendador = arrendador;
   }
