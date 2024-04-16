@@ -1,4 +1,5 @@
-import { Comentario } from "./comentario";
+import { Comentario } from "./Comentario";
+
 
 export class Arrendador {
     constructor(

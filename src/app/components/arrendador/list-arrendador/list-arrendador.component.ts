@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Arrendador } from '../../../models/arrendador';
 import { ArrendadorService } from '../../../services/arrendador.service';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { Arrendador } from '../../../models/Arrendador';
 
 
 @Component({

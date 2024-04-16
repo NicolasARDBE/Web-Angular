@@ -1,0 +1,10 @@
+.form-group {
+    margin-bottom: 15px; /* Espaciado entre cada grupo de etiqueta e input */
+  }
+  
+  label {
+    display: inline-block; /* Asegura que las etiquetas ocupen el mismo ancho */
+    width: 100px; /* Ancho fijo para las etiquetas (ajusta según necesites) */
+    text-align: right; /* Alineación del texto a la derecha */
+    margin-right: 10px; /* Espaciado entre la etiqueta y el input */
+  }
