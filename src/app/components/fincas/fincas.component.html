@@ -1,1 +1,42 @@
 <p>fincas works job!</p>
+
+<div class="container">
+    <h1>Gestión de Fincas</h1>
+  
+    <!-- Formulario para agregar o editar fincas -->
+    <form (ngSubmit)="saveFinca()">
+      <input type="hidden" [(ngModel)]="finca.id_finca" name="id_finca">
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="finca.nombre" name="nombre" required>
+      </div>
+      <div>
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" [(ngModel)]="finca.ubicacion" name="ubicacion" required>
+      </div>
+      <div>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" [(ngModel)]="finca.descripcion" name="descripcion">
+      </div>
+      <div>
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" [(ngModel)]="finca.precio" name="precio">
+      </div>
+      <button type="submit">Guardar</button>
+      <button type="button" (click)="resetFinca()">Cancelar</button>
+
+    </form>
+  
+    <!-- Lista de fincas -->
+    <h2>Lista de Fincas</h2>
+    <ul>
+        <li *ngFor="let finca of fincas">
+            {{ finca.nombre }} - {{ finca.ubicacion }}
+            <div>
+              <button (click)="editFinca(finca)">Editar</button>
+              <button (click)="deleteFinca(finca.id_finca)">Eliminar</button>
+            </div>
+        </li>
+    </ul>
+  </div>
+  
