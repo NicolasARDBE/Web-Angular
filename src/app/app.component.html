@@ -12,31 +12,18 @@
             <ul>
                 <li><a routerLink="/">Inicio</a></li>
                 <li><a routerLink="/fincas">Ver Fincas</a></li>
-                <!-- Añade más enlaces según tus rutas definidas -->
+                <li><a routerLink="/list-arrendador">Ver lista de Arrendadores</a></li>
+                <li><a routerLink="/actualizar-arrendador/:id">Actualizar Arrendador</a></li>
+                <li><a routerLink="/insertar-arrendador">Insertar Arrendador</a></li>
+                <li><a routerLink="/insertar-arrendador">Eliminar Arrendador</a></li>
             </ul>
         </nav>
 
         <!-- RouterOutlet es donde se renderizarán los componentes de las rutas -->
         <router-outlet></router-outlet>
-
-        <!-- Si aún necesitas cargar estos componentes directamente sin enrutamiento, mantenlos aquí, de lo contrario, quítalos para usar la navegación basada en rutas -->
         
-        <div class="section">
-            <h1>Lista de Arrendadores</h1>
-            <app-list-arrendador></app-list-arrendador>
-        </div>
-        <div class="section">
-            <h1>Actualizar Arrendador</h1>
-            <app-actualizar-arrendador></app-actualizar-arrendador>
-        </div>
-        <div class="section">
-            <h1>Insertar Arrendador</h1>
-            <app-insertar-arrendador></app-insertar-arrendador>
-        </div>
-        <div class="section">
-            <h1>Eliminar Arrendador</h1>
-            <app-eliminar-arrendador></app-eliminar-arrendador>
-        </div>
+        
+        
         
     </div>
 </body>
