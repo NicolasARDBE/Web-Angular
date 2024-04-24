@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArrendadorService } from '../../../services/arrendador.service';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Arrendador } from '../../../models/Arrendador';
+import { FormsModule } from '@angular/forms'; // Importa FormsModule
 
 
 @Component({
@@ -10,17 +11,17 @@ import { Arrendador } from '../../../models/Arrendador';
   templateUrl: './list-arrendador.component.html',
   standalone: true,
   styleUrls: ['./list-arrendador.component.css'],
-  imports: [CommonModule, RouterOutlet]
+  imports: [CommonModule, RouterOutlet, FormsModule]
 })
 
-export class ListArrendadorComponent {
+export class ListArrendadorComponent implements OnInit{
 
   arrendadores: Arrendador[] = [];
-  arrendador: Arrendador;
+  arrendador: Arrendador = new Arrendador();
+  editing: boolean = false;
 
   constructor(
-    private arrendadorService: ArrendadorService,
-  ){
+    private arrendadorService: ArrendadorService,){
     this.arrendador = new Arrendador();
   }
 
@@ -30,12 +31,10 @@ export class ListArrendadorComponent {
 
   cargarArrendadorService(){
     // Externo
-    this.arrendadorService.getPipolsExterno().then((post) => {
-      console.log(post);
-      this.arrendadores = post;
-    }).catch((error) => {
-      console.error(error);
-    });
+    this.arrendadorService.getAllArrendadores().then((data) => {
+      console.log(data);
+      this.arrendadores = data;
+    }).catch(error => console.error('Error fetching arrendadores:', error));
   }
 
   cambiarArrendador( event: Event, arrendador: Arrendador ){

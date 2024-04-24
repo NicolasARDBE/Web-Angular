@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Arrendador } from '../models/Arrendador';
 import { InsertarArrendadorComponent } from '../components/arrendador/insertar-arrendador/insertar-arrendador.component';
 import { formatApiUrl } from '../app.config';
+import {Finca} from "../models/finca";
 
 
 
@@ -13,11 +14,18 @@ import { formatApiUrl } from '../app.config';
 
 export class ArrendadorService {
 
+  private apiUrl = 'http://localhost:8080/arrendadores';
+
   constructor() { }
 
-  getPipolsExterno(): Promise< Arrendador[] > {
-    const url = formatApiUrl('arrendadores');
-    return axios.get< Arrendador[] >(url).then(response => response.data);
+  getAllArrendadores(): Promise<Arrendador[]> {
+    return axios.get<Arrendador[]>(this.apiUrl).then(response => {
+      console.log("Arrendadores recibidos:", response.data);
+      return response.data;
+    }).catch(error => {
+      console.error("Error al obtener los arrendadores", error);
+      throw error;
+    });
   }
 
   obtenerDetallesArrendador(id: number): Promise<Arrendador> {
