@@ -5,7 +5,8 @@ export class Finca {
       public ubicacion?: string | null,
       public descripcion?: string | null,
       public precio?: number | null,
-      public id_arrendador?: number | null
+      public id_arrendador?: number | null,
+      public id_arrendatario?: number | null
     ){}
 }
 
