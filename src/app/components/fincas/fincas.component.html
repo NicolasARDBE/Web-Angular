@@ -1,5 +1,3 @@
-<p>fincas works job!</p>
-
 <div class="container">
     <h1>Gestión de Fincas</h1>
   
@@ -30,13 +28,16 @@
     <!-- Lista de fincas -->
     <h2>Lista de Fincas</h2>
     <ul>
-        <li *ngFor="let finca of fincas">
-            {{ finca.nombre }} - {{ finca.ubicacion }}
-            <div>
-              <button (click)="editFinca(finca)">Editar</button>
-              <button (click)="deleteFinca(finca.id_finca)">Eliminar</button>
-            </div>
-        </li>
+      <li *ngFor="let finca of fincas">
+          {{ finca.nombre }} - {{ finca.ubicacion }}
+          <div>
+              <div>
+                  <button (click)="editFinca(finca)">Editar</button>
+              
+                  <button (click)="deleteFinca(finca.id_finca)">Eliminar</button>
+              </div>
+          </div>
+      </li>
     </ul>
   </div>
   

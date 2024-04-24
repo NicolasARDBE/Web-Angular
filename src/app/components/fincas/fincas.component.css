@@ -28,6 +28,7 @@
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s;
+    margin-right: 15px;
   }
   
   button:hover {
@@ -40,6 +41,7 @@
   
   button[type="button"]:hover {
     background-color: #5a6268;
+    
   }
   
   ul {
@@ -50,13 +52,19 @@
   li {
     margin-bottom: 10px;
     background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
+    border: 1px solid #04090f;
     padding: 10px;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+  
+  .botones button {
+    margin-right: 10px; /* Ajusta este valor según el espacio que desees entre los botones */
+  }
+  
+
   
   label {
     font-weight: bold;
