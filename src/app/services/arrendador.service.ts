@@ -52,4 +52,22 @@ export class ArrendadorService {
     });
   }
 
+
+  saveArrendador(arrendador: Arrendador): Promise<Arrendador> {
+    const url = arrendador.id_arrendador ? `${this.apiUrl}/${arrendador.id_arrendador}` : this.apiUrl;
+    const method = arrendador.id_arrendador ? 'put' : 'post';
+
+    return axios({
+      method: method,
+      url: url,
+      data: arrendador
+    }).then(response => {
+      console.log(`Finca ${arrendador.id_arrendador ? 'actualizada' : 'guardada'}:`, response.data);
+      return response.data;
+    }).catch(error => {
+      console.error(`Error al ${arrendador.id_arrendador ? 'actualizar' : 'guardar'} la finca`, error);
+      throw error;
+    });
+  }
+
 }
