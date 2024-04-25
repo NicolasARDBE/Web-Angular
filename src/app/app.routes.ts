@@ -12,6 +12,18 @@ import {ComentarioComponent} from "./components/comentario/comentario/comentario
 
 
 export const routes: Routes = [
+/*
+  { path: 'arrendador', component: ArrendadorComponent,
+      children: [
+      { path: 'get', component: getArren},
+      { path: 'get-all', component: GetAllPropiedadComponent},
+      { path: 'create', component: SavePropiedadComponent},
+      { path: 'update', component: UpdatePropiedadComponent},
+      { path: 'update/:id', component: UpdatePropiedadComponent},
+      { path: 'delete', component: DeletePropiedadComponent}
+      ]
+   },
+  */ 
   {
     path: 'list-arrendador',
     component: ListArrendadorComponent,

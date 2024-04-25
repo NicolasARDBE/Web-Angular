@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { Arrendador } from '../../../models/arrendador';
 import { ArrendadorService } from '../../../services/arrendador.service';
 import {Finca} from "../../../models/finca";
 
+
 @Component({
   selector: 'app-arrendador',
   standalone: true,
     imports: [
-      CommonModule,FormsModule
+      CommonModule,FormsModule,RouterOutlet
     ],
   templateUrl: './arrendador.component.html',
   styleUrl: './arrendador.component.css'
@@ -20,7 +21,7 @@ export class ArrendadorComponent implements OnInit {
   arrendador: Arrendador = new Arrendador();
   editing: boolean = false;
 
-  constructor(private arrendadorService: ArrendadorService,private router: Router) {}
+  constructor(private arrendadorService: ArrendadorService,private router: Router,private route: ActivatedRoute) {}
   ngOnInit() {
     this.getArrendadores();
   }

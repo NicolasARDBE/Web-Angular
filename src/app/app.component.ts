@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,RouterModule,RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ArrendadorService } from './services/arrendador.service';
-import { ListArrendadorComponent } from "./components/arrendador/list-arrendador/list-arrendador.component";
-import { ActualizarArrendadorComponent } from "./components/arrendador/actualizar-arrendador/actualizar-arrendador.component";
-import { InsertarArrendadorComponent } from "./components/arrendador/insertar-arrendador/insertar-arrendador.component";
-import { EliminarArrendadorComponent } from "./components/arrendador/eliminar-arrendador/eliminar-arrendador.component";
-import { FincaComponent } from './components/fincas/fincas.component';
+import { HeaderComponent } from "./components/header/header.component";
+import { FooterComponent } from "./components/footer/footer.component";
 import { routes } from './app.routes'; // Asume que tienes un archivo app.routes.ts que exporta tus rutas
 
 
@@ -19,7 +15,7 @@ import { routes } from './app.routes'; // Asume que tienes un archivo app.routes
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, CommonModule, ListArrendadorComponent, ActualizarArrendadorComponent, InsertarArrendadorComponent, EliminarArrendadorComponent, FincaComponent, RouterModule ],
+    imports: [RouterOutlet, CommonModule, RouterModule, HeaderComponent, FooterComponent],
 })
 export class AppComponent implements OnInit{
   title = 'WebAngular';

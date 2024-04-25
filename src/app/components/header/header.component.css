@@ -1,0 +1,55 @@
+/* header.component.css */
+.site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .brand-container h1 {
+    font-size: 3rem;
+    margin: 0;
+  }
+  
+  .navigation ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px; /* Ajusta el espacio entre los botones */
+  }
+  
+  .navigation li a {
+    text-decoration: none;
+    color: black; /* El color de tu texto */
+    font-weight: bold;
+    padding: 10px 20px; /* Ajusta el relleno para tus botones */
+    transition: background-color 0.3s;
+  }
+  
+  .navigation li a:hover {
+    background-color: #eee; /* Color al pasar el ratón */
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Ajusta el espacio entre las imágenes */
+  }
+  
+  .image-container::before,
+  .image-container::after {
+    content: '';
+    display: block;
+    width: 600px; /* Ajusta al tamaño de tu imagen */
+    height: 200px; /* Ajusta al tamaño de tu imagen */
+    background-size: cover;
+  }
+  
+  .image-container::before {
+    background-image: url('../../../../src/assets/headerr.png');
+  }
+  
+  .image-container::after {
+    background-image: url('../../../../src/assets/footer.png');
+  }
+  
