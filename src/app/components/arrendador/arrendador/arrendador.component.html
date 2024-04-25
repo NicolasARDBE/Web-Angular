@@ -21,7 +21,7 @@
 
   </form>
 
-  <!-- Lista de fincas -->
+  
   <h2>Lista de Arrendadores</h2>
   <ul>
     <li *ngFor="let arrendador of arrendadores">
@@ -31,6 +31,8 @@
           <button (click)="editArrendador(arrendador)">Editar</button>
 
           <button (click)="deleteArrendador(arrendador.id_arrendador)">Eliminar</button>
+
+          <button (click)="verSolicitudes(arrendador.id_arrendador)">Ver solicitudes</button>
         </div>
       </div>
     </li>

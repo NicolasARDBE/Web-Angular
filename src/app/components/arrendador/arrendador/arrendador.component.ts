@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { Arrendador } from '../../../models/arrendador';
@@ -19,7 +20,7 @@ export class ArrendadorComponent implements OnInit {
   arrendador: Arrendador = new Arrendador();
   editing: boolean = false;
 
-  constructor(private arrendadorService: ArrendadorService) {}
+  constructor(private arrendadorService: ArrendadorService,private router: Router) {}
   ngOnInit() {
     this.getArrendadores();
   }
@@ -56,4 +57,10 @@ export class ArrendadorComponent implements OnInit {
       }).catch(error => console.error('Error deleting finca:', error));
     }
   }
+
+  verSolicitudes(idArrendador: number | null | undefined) {
+    this.router.navigateByUrl('insertar-solicitudes'); 
+  }
+
+
 }
