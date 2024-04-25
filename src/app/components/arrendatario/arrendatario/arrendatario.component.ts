@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { Arrendatario } from '../../../models/arrendatario';
-import {ArrendatarioService} from '../../../services/Arrendatario.service';
+import {ArrendatarioService} from '../../../services/arrendatario.service';
 
 @Component({
   selector: 'app-arrendatario',
@@ -13,7 +13,7 @@ import {ArrendatarioService} from '../../../services/Arrendatario.service';
   templateUrl: './arrendatario.component.html',
   styleUrl: './arrendatario.component.css'
 })
-export class ArrendatarioComponent {
+export class ArrendatarioComponent implements OnInit{
   arrendatarios: Arrendatario[] = [];
   arrendatario: Arrendatario = new Arrendatario();
   editing: boolean = false;

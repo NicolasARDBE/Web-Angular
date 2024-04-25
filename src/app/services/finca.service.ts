@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Finca } from '../models/finca';
+import {formatApiUrl} from "../app.config";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FincaService {
-  private apiUrl = 'http://localhost:8080/fincas';
+  private apiUrl = formatApiUrl("fincas");
 
   constructor() { }
 

@@ -7,7 +7,7 @@ import { routes } from './app.routes';
 const apiUrl = 'http://localhost:8080';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)] 
+  providers: [provideRouter(routes)]
 };
 
 

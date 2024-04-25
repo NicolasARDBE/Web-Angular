@@ -6,6 +6,7 @@ import { InsertarArrendadorComponent } from './components/arrendador/insertar-ar
 import { EliminarArrendadorComponent } from './components/arrendador/eliminar-arrendador/eliminar-arrendador.component';
 import {ArrendadorComponent} from "./components/arrendador/arrendador/arrendador.component";
 import {ArrendatarioComponent} from "./components/arrendatario/arrendatario/arrendatario.component";
+import {ComentarioComponent} from "./components/comentario/comentario/comentario.component";
 
 
 export const routes: Routes = [
@@ -49,6 +50,12 @@ export const routes: Routes = [
     path: 'arrendatarios',
     component: ArrendatarioComponent,
     title: 'Listar Arrendatarios'
+  },
+
+  {
+    path: 'comentarios',
+    component: ComentarioComponent,
+    title: 'Listar Comentarios'
   }
 
 ];

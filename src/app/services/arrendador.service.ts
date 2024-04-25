@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Arrendador } from '../models/arrendador';
 import { formatApiUrl } from '../app.config';
+import {Finca} from "../models/finca";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { formatApiUrl } from '../app.config';
 
 export class ArrendadorService {
 
-  private apiUrl = 'http://localhost:8080/arrendadores';
+  private apiUrl = formatApiUrl("arrendadores");
 
   constructor() { }
 
@@ -19,6 +20,16 @@ export class ArrendadorService {
       return response.data;
     }).catch(error => {
       console.error("Error al obtener los arrendadores", error);
+      throw error;
+    });
+  }
+
+  getArrendadorById(id: number): Promise<Arrendador> {
+    return axios.get<Arrendador>(`${this.apiUrl}/${id}`).then(response => {
+      console.log("Arrendador recibido:", response.data);
+      return response.data;
+    }).catch(error => {
+      console.error("Error al obtener el arrendador", error);
       throw error;
     });
   }

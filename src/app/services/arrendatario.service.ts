@@ -3,13 +3,16 @@ import axios from 'axios';
 import { Arrendatario } from '../models/arrendatario';
 import { formatApiUrl } from '../app.config';
 import {Finca} from "../models/finca";
+import {Arrendador} from "../models/arrendador";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArrendatarioService {
 
-  private apiUrl = 'http://localhost:8080/arrendatarios';
+  private apiUrl = formatApiUrl("arrendatarios");
+
+
   constructor() { }
 
   getAllArrendatarios(): Promise<Arrendatario[]> {
@@ -18,6 +21,17 @@ export class ArrendatarioService {
       return response.data;
     }).catch(error => {
       console.error("Error al obtener los arrendatarios", error);
+      throw error;
+    });
+  }
+
+
+  getArrendatarioById(id: number): Promise<Arrendatario> {
+    return axios.get<Arrendatario>(`${this.apiUrl}/${id}`).then(response => {
+      console.log("Arrendatario recibido:", response.data);
+      return response.data;
+    }).catch(error => {
+      console.error("Error al obtener el Arrendatario", error);
       throw error;
     });
   }
