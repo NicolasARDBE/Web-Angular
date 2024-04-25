@@ -1,1 +1,42 @@
-<p>insertar-solicitud works!</p>
+<div class="container">
+    <h1>Gestión de Solicitudes</h1>
+  
+    <!-- Formulario para agregar o editar solicitudes -->
+    <form (ngSubmit)="saveSolicitud()">
+      <input type="hidden" [(ngModel)]="solicitud.idSolicitud" name="idSolicitud">
+      <div>
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" [(ngModel)]="solicitud.estado" name="estado" required>
+      </div>
+      <div>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" [(ngModel)]="solicitud.fecha" name="fecha" required>
+      </div>
+      <div>
+        <label for="idArrendatario">ID Arrendatario:</label>
+        <input type="number" id="idArrendatario" [(ngModel)]="solicitud.idArrendatario" name="idArrendatario" required>
+      </div>
+      <div>
+        <label for="idFinca">ID Finca:</label>
+        <input type="number" id="idFinca" [(ngModel)]="solicitud.idFinca" name="idFinca" required>
+      </div>
+      
+      <button type="submit">Guardar</button>
+      <button type="button" (click)="resetSolicitud()">Cancelar</button>
+    </form>
+  
+    <!-- Lista de solicitudes -->
+    <h2>Lista de Solicitudes</h2>
+    <ul>
+      <li *ngFor="let solicitud of solicitudes">
+        ID: {{ solicitud.idSolicitud }} - Estado: {{ solicitud.estado }} - Fecha: {{ solicitud.fecha }}
+        <div>
+          <div>
+            <button (click)="editSolicitud(solicitud)">Editar</button>
+            <button (click)="deleteSolicitud(solicitud.idSolicitud)">Eliminar</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
