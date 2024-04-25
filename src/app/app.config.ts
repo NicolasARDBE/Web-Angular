@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 
 
 const apiUrl = 'http://localhost:8080';
+//const apiUrl = 'https://gruposjaveriana.dynaco.co/grupo12';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes)]
