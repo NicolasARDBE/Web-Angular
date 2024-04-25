@@ -1,11 +1,13 @@
+import {Arrendatario} from "./arrendatario";
+import {Arrendador} from "./arrendador";
 
 export class Comentario {
-    constructor(
-      public id_solicitud?: number | null,
-      public calificacion?: number | null,
-      public comentario?: string | null,
-      public fecha?: string | null,
-      public id_Arrendador?: string | null,
-      public id_Arrendatario?: string | null
-    ){}
-  }
+  constructor(
+    public id_comentario?: number | null,
+    public fecha?: Date | null,
+    public calificacion?: number | null,
+    public comentario?: string | null,
+    public id_arrendador?: Arrendador | null,
+    public id_arrendatario?: Arrendatario | null
+  ){}
+}

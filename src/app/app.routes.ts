@@ -8,6 +8,7 @@ import {ArrendadorComponent} from "./components/arrendador/arrendador/arrendador
 import {ArrendatarioComponent} from "./components/arrendatario/arrendatario/arrendatario.component";
 import {SolicitudComponent } from './components/solicitud/solicitud.component';
 import { InsertarSolicitudComponent } from './components/solicitud/insertar-solicitud/insertar-solicitud.component'; 
+import {ComentarioComponent} from "./components/comentario/comentario/comentario.component";
 
 
 export const routes: Routes = [
@@ -53,15 +54,10 @@ export const routes: Routes = [
     title: 'Listar Arrendatarios'
   },
 
-  { 
-    path: 'ver-solicitudes', 
-    component: SolicitudComponent,
-    title:'Solicitudes'  
-  },
-  
-  { 
-    path: 'insertar-solicitudes', 
-    component: InsertarSolicitudComponent,
-    title:'insertar-solicitudes'  
+  {
+    path: 'comentarios',
+    component: ComentarioComponent,
+    title: 'Listar Comentarios'
   }
+
 ];

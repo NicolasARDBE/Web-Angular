@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Gestión de Comentarios</h1>
+
+  <!-- Formulario para agregar o editar fincas -->
+  <form (ngSubmit)="saveComentario()">
+    <input type="hidden" [(ngModel)]="comentario.id_comentario" name="id_comentario">
+    <div>
+      <label for="comentario">Comentario:</label>
+      <input type="text" id="comentario" [(ngModel)]="comentario.comentario" name="comentario" required>
+    </div>
+    <div>
+      <label for="calificacion">Calificacion:</label>
+      <input type="number" id="calificacion" [(ngModel)]="comentario.calificacion" name="calificacion" required>
+    </div>
+    <div>
+      <label for="arrendador">ID arrendador:</label>
+      <input type="number" id="arrendador" [(ngModel)]="comentario.id_arrendador" name="arrendador">
+    </div>
+    <div>
+      <label for="arrendatario">ID arrendatario:</label>
+      <input type="number" id="arrendatario" [(ngModel)]="comentario.id_arrendatario" name="arrendatario">
+    </div>
+
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="resetComentario()">Cancelar</button>
+
+  </form>
+
+  <!-- Lista de fincas -->
+  <h2>Lista de Comentarios y Reseñas</h2>
+  <ul>
+    <li *ngFor="let comentario of comentarios">
+      {{ comentario.comentario }} - {{ comentario.calificacion }}
+      <div>
+        <div>
+          <button (click)="editComentario(comentario)">Editar</button>
+
+          <button (click)="deleteComentario(comentario.id_comentario)">Eliminar</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
