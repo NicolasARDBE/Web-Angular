@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import axios from 'axios';
-import { Arrendador } from '../models/Arrendador';
-import { InsertarArrendadorComponent } from '../components/arrendador/insertar-arrendador/insertar-arrendador.component';
+import { Arrendador } from '../models/arrendador';
 import { formatApiUrl } from '../app.config';
-import {Finca} from "../models/finca";
-
-
 
 @Injectable({
   providedIn: 'root'

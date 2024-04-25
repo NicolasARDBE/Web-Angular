@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArrendadorService } from '../../../services/arrendador.service';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Arrendador } from '../../../models/Arrendador';
+import { Arrendador } from '../../../models/arrendador';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
 
 

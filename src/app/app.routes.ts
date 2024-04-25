@@ -5,6 +5,7 @@ import { FincaComponent } from './components/fincas/fincas.component';
 import { InsertarArrendadorComponent } from './components/arrendador/insertar-arrendador/insertar-arrendador.component';
 import { EliminarArrendadorComponent } from './components/arrendador/eliminar-arrendador/eliminar-arrendador.component';
 import {ArrendadorComponent} from "./components/arrendador/arrendador/arrendador.component";
+import {ArrendatarioComponent} from "./components/arrendatario/arrendatario/arrendatario.component";
 
 
 export const routes: Routes = [
@@ -42,7 +43,12 @@ export const routes: Routes = [
     path: 'arrendadores',
     component: ArrendadorComponent,
     title: 'Listar Arrendadores'
-  }
+  },
 
+  {
+    path: 'arrendatarios',
+    component: ArrendatarioComponent,
+    title: 'Listar Arrendatarios'
+  }
 
 ];

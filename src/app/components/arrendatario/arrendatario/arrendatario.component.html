@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>Gestión de cuentas de Arrendatarios</h1>
+
+  <!-- Formulario para agregar o editar fincas -->
+  <form (ngSubmit)="saveArrendatario()">
+    <input type="hidden" [(ngModel)]="arrendatario.id_arrendatario" name="id_arrendatario">
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" [(ngModel)]="arrendatario.nombre" name="nombre" required>
+    </div>
+    <div>
+      <label for="apellido">Apellido:</label>
+      <input type="text" id="apellido" [(ngModel)]="arrendatario.apellido" name="apellido" required>
+    </div>
+    <div>
+      <label for="correo">Correo:</label>
+      <input type="text" id="correo" [(ngModel)]="arrendatario.correo" name="correo">
+    </div>
+
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="resetArrendatario()">Cancelar</button>
+
+  </form>
+
+  <!-- Lista de fincas -->
+  <h2>Lista de Arrendatario</h2>
+  <ul>
+    <li *ngFor="let arrendatario of arrendatarios">
+      {{ arrendatario.nombre }} - {{ arrendatario.apellido }}
+      <div>
+        <div>
+          <button (click)="editArrendatario(arrendatario)">Editar</button>
+
+          <button (click)="deleteArrendatario(arrendatario.id_arrendatario)">Eliminar</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+

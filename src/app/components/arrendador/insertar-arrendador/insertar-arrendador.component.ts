@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Arrendador } from '../../../models/Arrendador';
+import { Arrendador } from '../../../models/arrendador';
 import { FormsModule } from '@angular/forms';
 import { ArrendadorService } from '../../../services/arrendador.service';
 

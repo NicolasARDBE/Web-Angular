@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { ArrendadorService } from '../../../services/arrendador.service';
 import { CommonModule } from '@angular/common';
-import { Arrendador } from '../../../models/Arrendador';
+import { Arrendador } from '../../../models/arrendador';
 import { FormsModule } from '@angular/forms';
 
 

@@ -1,4 +1,4 @@
-import { Comentario } from "./Comentario";
+import { Comentario } from "./comentario";
 
 
 export class Arrendador {
