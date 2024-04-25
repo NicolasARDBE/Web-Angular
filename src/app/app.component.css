@@ -1,58 +1,54 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Inter, Arial, sans-serif;
-  color: black;
-  background-color: #f0f0f0;
-}
-
-.navbar {
-  background-color: #101010;
-  color: white;
-  padding: 20px;
+/* app.component.css */
+.menu {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
-.navbar .nav-logo {
-  font-size: 24px;
-}
-
-.nav-items {
-  display: flex;
-  gap: 40px;
-}
-
-.nav-item {
-  font-size: 18px;
-  font-weight: 500;
-  transition: transform 0.3s ease;
-}
-
-.nav-item:hover {
-  transform: translateY(-5px);
+.menu-header {
+  font-size: 3rem;
+  margin: 0;
 }
 
 .menu-items {
+  list-style: none;
+  padding: 0;
   display: flex;
-  flex-direction: column;
-  gap: 28px;
-  padding: 20px;
+  flex-direction: column; /* Ajusta para que los elementos estén en columna */
+  gap: 5px; /* Ajusta el espacio entre los botones */
 }
 
 .menu-item {
-  font-size: 18px;
-  transition: transform 0.3s ease;
+  text-decoration: none;
+  color: black; /* El color de tu texto */
+  font-weight: bold;
+  padding: 5px 10px; /* Ajusta el relleno para tus botones */
+  transition: background-color 0.3s;
 }
 
 .menu-item:hover {
-  transform: translateY(-5px);
+  background-color: #eee; /* Color al pasar el ratón */
+}
+
+
+.image-container {
+  display: block; /* Cambia flex por block para adecuarlo al <aside> */
+  width: 600px; /* Ajusta al tamaño de tu imagen */
+  height: 200px; /* Ajusta al tamaño de tu imagen */
+  margin: 20px auto; /* Centra las imágenes en el menú */
+  background-size: cover;
+  position: relative; /* Agregado para posicionar los pseudo-elementos */
+}
+
+.image-container::before,
+.image-container::after {
+  content: '';
+  position: absolute; /* Cambiado para posicionar sobre el contenedor */
+  width: 50%; /* Cada pseudo-elemento cubre la mitad del ancho */
+  height: 100%;
+  top: 0;
+  background-size: cover;
 }
 
