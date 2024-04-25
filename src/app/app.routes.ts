@@ -54,10 +54,26 @@ export const routes: Routes = [
     title: 'Listar Arrendatarios'
   },
 
+
+  { 
+    path: 'insertar-solicitudes', 
+    component: InsertarSolicitudComponent,
+    title:'insertar-solicitudes'  
+  },
+  { 
+    path: 'ver-solicitudes', 
+    component: SolicitudComponent,
+    title:'Solicitudes'  
+  },
+
+
   {
     path: 'comentarios',
     component: ComentarioComponent,
     title: 'Listar Comentarios'
   }
+
+
+
 
 ];
