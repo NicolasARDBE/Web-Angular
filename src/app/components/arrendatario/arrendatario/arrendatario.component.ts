@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { Arrendatario } from '../../../models/arrendatario';
 import {ArrendatarioService} from '../../../services/arrendatario.service';
+import { SolicitudService } from '../../../services/solicitud.service';
+import { Solicitud } from '../../../models/solicitud';
 
 @Component({
   selector: 'app-arrendatario',
@@ -18,7 +20,7 @@ export class ArrendatarioComponent implements OnInit{
   arrendatario: Arrendatario = new Arrendatario();
   editing: boolean = false;
 
-  constructor(private ArrendatarioService: ArrendatarioService) {}
+  constructor(private ArrendatarioService: ArrendatarioService,private solicitudService: SolicitudService) {}
 
   ngOnInit() {
     this.getArrendatarios();
@@ -55,4 +57,22 @@ export class ArrendatarioComponent implements OnInit{
       }).catch(error => console.error('Error deleting Arrendatario:', error));
     }
   }
+
+  insertarSolicitud(id: number | null | undefined){
+    if (id !== null && id !== undefined) {
+      const solicitud: Solicitud = new Solicitud(
+        null, // ID de la solicitud (se generará en el backend)
+        'Pendiente', // Estado inicial de la solicitud
+        new Date().toISOString(), // Fecha actual en formato ISO string
+        2, // ID del arrendatario
+        15 // ID de la finca (debes proporcionar el valor correcto si corresponde)
+      );
+
+      this.solicitudService.saveSolicitud(solicitud).then(() => {
+        // Actualizar la lista de arrendatarios después de guardar la solicitud
+        this.getArrendatarios();
+      }).catch(error => console.error('Error al guardar la Solicitud:', error));
+    }
+  }
+
 }
