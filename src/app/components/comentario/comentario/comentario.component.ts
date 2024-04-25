@@ -9,14 +9,11 @@ import { ComentarioService } from '../../../services/comentario.service';
 @Component({
   selector: 'app-comentario',
   standalone: true,
-    imports: [
-      CommonModule,FormsModule
-    ],
+    imports: [CommonModule,FormsModule],
   templateUrl: './comentario.component.html',
   styleUrl: './comentario.component.css'
 })
 export class ComentarioComponent implements OnInit{
-
   comentarios: Comentario[] = [];
   comentario: Comentario = new Comentario();
   editing: boolean = false;
