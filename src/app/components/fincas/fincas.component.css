@@ -65,15 +65,26 @@
   
 
   .imagen_finca {
-    max-width: 400px; /* Máximo ancho de 500px */
+    max-width: 400px; /* Máximo ancho de 400px */
     height: auto; /* Altura automática para mantener la proporción */
     float: left; /* Alinear a la izquierda */
-    margin-left: -430px; /* Margen derecho para separar del contenido */
+    margin-left: -430px; /* Margen izquierdo para separar del contenido */
     margin-top: 110px;
     border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
     border-radius: 8px; /* Bordes redondeados */
+    transform: scale(1.05); /* Escala inicial */
+    transition: transform 0.3s ease; /* Transición de la propiedad transform */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  }
+}
+
+.ult_finca:hover,
+.finca5_finca:hover,
+.finca4_finca:hover,
+.otra_finca:hover,
+.iui_finca:hover,
+.imagen_finca:hover {
+    transform: scale(1.1); /* Escala aumentada al pasar el cursor */
+}
 
   .iui_finca {
     max-width: 400px; /* Máximo ancho de 500px */
@@ -81,6 +92,8 @@
     float: left; /* Alinear a la izquierda */
     margin-left: -940px; /* Margen derecho para separar del contenido */
     margin-top: 50px;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
     border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
@@ -93,6 +106,8 @@
     float: left; /* Alinear a la izquierda */
     margin-left: 135px; /* Margen derecho para separar del contenido */
     margin-top: 10px;
+    transform: scale(1.05); /* Escala inicial */
+    transition: transform 0.3s ease;
     border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
@@ -104,6 +119,8 @@
     float: left; /* Alinear a la izquierda */
     margin-left: 665px; /* Margen derecho para separar del contenido */
     margin-top: -305px;
+    transform: scale(1.05); /* Escala inicial */
+    transition: transform 0.3s ease;
     border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
@@ -115,6 +132,9 @@
     float: left; /* Alinear a la izquierda */
     margin-left: 665px; /* Margen derecho para separar del contenido */
     margin-top: -315px;
+
+    transform: scale(1.05); /* Escala inicial */
+    transition: transform 0.3s ease;
     border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
@@ -126,6 +146,7 @@
     float: left; /* Alinear a la izquierda */
     margin-left: 135px; /* Margen derecho para separar del contenido */
     margin-top: 60px;
+    
     border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
