@@ -173,3 +173,9 @@
     font-weight: bold;
   }
   
+
+  .descripcion-input {
+    height: 20px;
+    width: 300px; /* Establece una altura mínima para evitar que la caja de texto sea demasiado pequeña */
+  }
+  
