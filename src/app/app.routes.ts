@@ -9,6 +9,7 @@ import {ArrendatarioComponent} from "./components/arrendatario/arrendatario/arre
 import {SolicitudComponent } from './components/solicitud/solicitud.component';
 import { InsertarSolicitudComponent } from './components/solicitud/insertar-solicitud/insertar-solicitud.component'; 
 import {ComentarioComponent} from "./components/comentario/comentario/comentario.component";
+import { LoginComponent } from './components/login/login.component';
 
 
 export const routes: Routes = [
@@ -83,9 +84,11 @@ export const routes: Routes = [
     path: 'comentarios',
     component: ComentarioComponent,
     title: 'Listar Comentarios'
+  },
+
+  {
+    path: 'login',
+    component: LoginComponent,
+    title: 'Login'
   }
-
-
-
-
 ];
