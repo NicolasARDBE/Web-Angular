@@ -13,8 +13,12 @@
         <input type="number" id="precio" [(ngModel)]="finca.precio" name="precio">
       </div>
       <div>
-        <label for="id_arrendatario">Arrendatario:</label>
-        <input type="number" id="id_arrendatario" [(ngModel)]="finca.id_arrendatario" name="id_arrendatario">
+        <label for="">Municipio:</label>
+        <input type="text" id="municipio" [(ngModel)]="finca.municipio" name="municipio">
+      </div>
+      <div>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" [(ngModel)]="finca.descripcion" name="descripcion" class="descripcion-input">
       </div>
       <div>
         <label for="id_arrendador">Arrendador:</label>
