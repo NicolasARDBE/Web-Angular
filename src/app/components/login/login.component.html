@@ -1,49 +1,90 @@
 <section class="container">
-    <div class="background-overlay"></div>
-    <div class="content">
-      <div class="image-section">
-        <div class="image-wrapper">
-          <img src="../../../assets/logo.png" alt="Logo">
-        </div>
-        <div class="content-container">
-          <h1 class="section-heading">Mas y mejores <span>Fincas.</span></h1>
-          <p class="section-paragraph">Cada paso más adelante.</p>
-        </div>
-      </div>
-      <div class="form-section">
-        <div class="form-wrapper" *ngIf="!showRegister">
-          <div class="logo-container">
-            <img src="../../../assets/logo.png" alt="Logo" class="logo">
-          </div>
-          <h2>Bienvenido de vuelta! 👋🏻</h2>
-          <p>Ingresa tus credenciales.</p>
-          <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-            <div class="input-container">
-              <div class="form-group">
-                <label for="email">Correo</label>
-                <input type="email" id="email" name="email" [(ngModel)]="loginCredentials.email" required>
-              </div>
-              <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" [(ngModel)]="loginCredentials.password" required>
-              </div>
-            </div>
-            <div class="remember-forgot">
-              <div class="remember-me">
-                <input type="checkbox" id="remember-me" [(ngModel)]="loginCredentials.remember" name="remember">
-                <label for="remember-me">Recuérdame</label>
-              </div>
-              <a href="#">Olvidé mi contraseña</a>
-            </div>
-            <button class="login-btn" type="submit">Ingresar</button>
-          </form>
-          <button class="register-btn" (click)="goToRegister()">Registrarse</button>
-          <div class="or-divider">o</div>
-          <div class="home-button">
-            <a routerLink="/">Inicio</a>
-          </div>
-        </div>
-      </div>
+  <div class="image-section">
+    <div class="image-wrapper">
+      <img src="../../../assets/mesh-gradient.png" alt="Imagen decorativa">
     </div>
-  </section>
-  
+    <div class="content-container">
+      <h1 class="section-heading">Mas y mejores <span>Fincas.</span></h1>
+      <p class="section-paragraph">Cada paso más adelante.</p>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-wrapper" *ngIf="showLoginForm; else registerTemplate">
+      <div class="logo-container">
+        <a href="#" class="logo-container">
+          <img src="../../../assets/logo.png" alt="Logo">
+        </a>
+      </div>
+
+      <h2>Bienvenido de vuelta! 👋🏻</h2>
+      <p>Ingresa tus credenciales.</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="input-container">
+          <div class="form-group">
+            <label for="email">Correo</label>
+            <input type="email" id="email" formControlName="email" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" formControlName="password">
+          </div>
+        </div>
+
+        <div class="remember-forgot">
+          <div class="remember-me">
+            <input type="checkbox" id="remember-me" formControlName="rememberMe">
+            <label for="remember-me">Recuerdame</label>
+          </div>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="login-btn" [disabled]="loginForm.invalid">Ingresar</button>
+        <button type="button" class="register-btn" (click)="toggleForms()">Registrarse</button>
+      </form>
+    </div>
+
+    <ng-template #registerTemplate>
+      <div class="form-wrapper">
+        <h2>Crear Cuenta</h2>
+        <p>Completa tus datos.</p>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+          <div class="input-container">
+            <div class="form-group">
+              <label for="firstName">Nombres *</label>
+              <input type="text" id="firstName" formControlName="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Apellidos *</label>
+              <input type="text" id="lastName" formControlName="lastName" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico *</label>
+              <input type="email" id="email" formControlName="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono</label>
+              <input type="text" id="phone" formControlName="phone" pattern="[0-9]+" title="Por favor, ingrese solo números">
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña *</label>
+              <input type="password" id="password" formControlName="password" required minlength="8">
+            </div>
+            <div class="form-group">
+              <label for="userType">Tipo de usuario:</label>
+              <div id="userType">
+                <input type="radio" id="arrendador" formControlName="userType" value="arrendador" required>
+                <label for="arrendador">Arrendador</label>
+                <input type="radio" id="arrendatario" formControlName="userType" value="arrendatario" required>
+                <label for="arrendatario">Arrendatario</label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="login-btn" [disabled]="registerForm.invalid">Registrar</button>
+        </form>
+        <button type="button" class="register-btn" (click)="toggleForms()">Volver a Login</button>
+      </div>
+    </ng-template>
+  </div>
+</section>

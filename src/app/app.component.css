@@ -1,12 +1,3 @@
-/* app.component.css */
-.menu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-}
-
 .menu-header {
   font-size: 2rem;
   margin: 0;
@@ -16,39 +7,18 @@
   list-style: none;
   padding: 0;
   display: flex;
-  flex-direction: column; /* Ajusta para que los elementos estén en columna */
-  gap: 5px; /* Ajusta el espacio entre los botones */
+  flex-direction: column;
+  gap: 5px;
 }
 
 .menu-item {
   text-decoration: none;
-  color: black; /* El color de tu texto */
+  color: black;
   font-weight: bold;
-  padding: 5px 10px; /* Ajusta el relleno para tus botones */
+  padding: 5px 10px;
   transition: background-color 0.3s;
 }
 
 .menu-item:hover {
-  background-color: #fffce1; /* Color al pasar el ratón */
+  background-color: #fffce1;
 }
-
-
-.image-container {
-  display: block; /* Cambia flex por block para adecuarlo al <aside> */
-  width: 600px; /* Ajusta al tamaño de tu imagen */
-  height: 200px; /* Ajusta al tamaño de tu imagen */
-  margin: 20px auto; /* Centra las imágenes en el menú */
-  background-size: cover;
-  position: relative; /* Agregado para posicionar los pseudo-elementos */
-}
-
-.image-container::before,
-.image-container::after {
-  content: '';
-  position: absolute; /* Cambiado para posicionar sobre el contenedor */
-  width: 50%; /* Cada pseudo-elemento cubre la mitad del ancho */
-  height: 100%;
-  top: 0;
-  background-size: cover;
-}
-

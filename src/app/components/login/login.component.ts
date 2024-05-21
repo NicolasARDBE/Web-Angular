@@ -1,48 +1,53 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-
 export class LoginComponent {
-  loginCredentials = { email: '', password: '', remember: false };
-  registrationDetails = { email: '', password: '' };
-  showRegister = false;
-  errorMessage: string = '';
+  loginForm: FormGroup;
+  registerForm: FormGroup;
+  showLoginForm = true;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private router: Router, private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      rememberMe: [false]
+    });
 
-  toggleForms() {
-    this.showRegister = !this.showRegister;
-    console.log("Estado de showRegister: ", this.showRegister); // Debería mostrar true o false en la consola del navegador
+    this.registerForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.pattern('[0-9]+')]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      userType: ['', Validators.required]
+    });
   }
 
-  async login(form: NgForm) {
-    if (form.valid) {
-      try {
-        await this.authService.login(this.loginCredentials);
-        this.router.navigate(['/home']);
-      } catch (error) {
-        this.errorMessage = 'Invalid email or password';
-      }
+  login() {
+    if (this.loginForm.valid) {
+      localStorage.setItem('isAuthenticated', 'true');
+      this.router.navigate(['/']);
     }
   }
 
-  goToRegister() {
-    this.router.navigate(['/register']);
+  register() {
+    if (this.registerForm.valid) {
+      // Implementar lógica de registro
+      alert('Usuario registrado correctamente');
+      this.toggleForms();
+    }
   }
 
-  // Implementar registrarArrendador si es necesario
+  toggleForms() {
+    this.showLoginForm = !this.showLoginForm;
+  }
 }
