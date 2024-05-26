@@ -2,7 +2,7 @@
 
 :root {
   --text-dark: hsl(240, 54%, 15%);
-  --text-light: hsl(242, 18%, 64%);
+  --text-light: hsl(242, 100%, 42%);
   --primary: hsl(222, 98%, 60%);
   --primary-lighter: hsl(240, 33%, 86%);
   --primary-gradient: linear-gradient(to right, #3671fd, #6f31ff);
