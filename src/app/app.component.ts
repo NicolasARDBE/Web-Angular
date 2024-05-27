@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -13,11 +13,28 @@ import { FooterComponent } from './components/footer/footer.component';
 })
 export class AppComponent implements OnInit {
   title = 'WebAngular';
-  isAuthenticated = false;  // Añade una propiedad de autenticación
+  isAuthenticated = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.checkAuthentication();
+      }
+    });
+  }
 
   ngOnInit(): void {
-    // Aquí puedes agregar cualquier lógica adicional que necesites durante la inicialización del componente
+    this.checkAuthentication();
+  }
+
+  checkAuthentication(): void {
+    const authStatus = localStorage.getItem('isAuthenticated');
+    this.isAuthenticated = authStatus === 'true';
+  }
+
+  logout() {
+    localStorage.removeItem('isAuthenticated');
+    this.isAuthenticated = false;
+    this.router.navigate(['/login']);
   }
 }

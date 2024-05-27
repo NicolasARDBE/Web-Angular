@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         const credentials = this.loginForm.value;
         const response = await this.authService.login(credentials);
         localStorage.setItem('isAuthenticated', 'true');
-        this.router.navigate(['/']);
+        this.router.navigate(['/']);  // Redirigir al usuario a la página principal
       } catch (error) {
         console.error('Error en el login:', error);
       }

@@ -7,7 +7,7 @@ import { FincaService } from '../../services/finca.service';
 @Component({
   selector: 'app-fincas',
   standalone: true,
-  imports: [CommonModule,FormsModule], // Añade FormsModule aquí
+  imports: [CommonModule, FormsModule], // Añade FormsModule aquí
   templateUrl: './fincas.component.html',
   styleUrls: ['./fincas.component.css']
 })
@@ -15,6 +15,16 @@ export class FincaComponent implements OnInit {
   fincas: Finca[] = [];
   finca: Finca = new Finca();
   editing: boolean = false;
+
+  // Lista de imágenes para las fincas
+  private images: string[] = [
+    'assets/finca2.jpg',
+    'assets/finca3.jpeg',
+    'assets/foto4.jpg',
+    'assets/foto5.jpg',
+    'assets/finca6.jpg',
+    'assets/finca7.jpg'
+  ];
 
   constructor(private fincaService: FincaService) {}
 
@@ -53,5 +63,9 @@ export class FincaComponent implements OnInit {
       }).catch(error => console.error('Error deleting finca:', error));
     }
   }
-  
+
+  // Método para obtener la imagen correspondiente para cada finca
+  getImageForFinca(index: number): string {
+    return this.images[index % this.images.length];
+  }
 }
