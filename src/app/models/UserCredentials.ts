@@ -1,5 +1,5 @@
 export interface UserCredentials {
-    email: string;
-    password: string;
+    correo: string;
+    contrasena: string;
   }
   

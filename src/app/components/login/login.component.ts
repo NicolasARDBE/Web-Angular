@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule], // Asegúrate de que ReactiveFormsModule está importado aquí
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -18,10 +17,10 @@ export class LoginComponent implements OnInit {
   registerForm: FormGroup;
   showLoginForm = true;
 
-  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService, private http: HttpClient) {
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email]],
+      contrasena: ['', Validators.required],
       rememberMe: [false]
     });
 
@@ -30,38 +29,32 @@ export class LoginComponent implements OnInit {
       apellido: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.pattern('[0-9]+')]],
-      contrasena: ['', [Validators.required, Validators.minLength(8)]], // Cambiar 'password' a 'contrasena'
+      contrasena: ['', [Validators.required, Validators.minLength(8)]],
       userType: ['', Validators.required]
     });
   }
 
-  ngOnInit(): void {
-    this.fetchCsrfToken();
+  async ngOnInit(): Promise<void> {
+    await this.authService.fetchCsrfToken();
   }
 
-  fetchCsrfToken() {
-    this.http.get('/csrf').subscribe((response: any) => {
-      const token = response.token;
-      document.cookie = `XSRF-TOKEN=${token}`;
-    });
-  }
-
-  login() {
+  async login() {
     if (this.loginForm.valid) {
-      const credentials = this.loginForm.value;
-      this.authService.login(credentials)
-        .then(response => {
-          localStorage.setItem('isAuthenticated', 'true');
-          this.router.navigate(['/']);
-        })
-        .catch(error => console.error('Error en el login:', error));
+      try {
+        const credentials = this.loginForm.value;
+        const response = await this.authService.login(credentials);
+        localStorage.setItem('isAuthenticated', 'true');
+        this.router.navigate(['/']);
+      } catch (error) {
+        console.error('Error en el login:', error);
+      }
     }
   }
 
   register() {
     if (this.registerForm.valid) {
       const newUser: User = this.registerForm.value;
-      console.log('Datos del formulario de registro:', newUser); // Verificar los datos aquí
+      console.log('Datos del formulario de registro:', newUser);
       if (newUser.userType === 'arrendador') {
         this.authService.registerArrendador(newUser)
           .then(response => {

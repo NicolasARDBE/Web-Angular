@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { User } from '../models/user';
 import { formatApiUrl } from '../app.config';
-import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +9,18 @@ import { HttpHeaders } from '@angular/common/http';
 export class AuthService {
   private arrendatariosUrl = formatApiUrl('arrendatarios/crearArrendatario');
   private arrendadoresUrl = formatApiUrl('arrendadores/crearArrendador');
+  private loginUrl = formatApiUrl('jwt/security/autenticar/autenticar-correo-contrasena');
+
+  async fetchCsrfToken(): Promise<void> {
+    try {
+      const response = await axios.get('/csrf');
+      const token = response.data.token;
+      document.cookie = `XSRF-TOKEN=${token}`;
+    } catch (error) {
+      console.error('Error fetching CSRF token:', error);
+      throw error;
+    }
+  }
 
   private getCsrfToken(): string {
     const match = document.cookie.match(new RegExp('(^| )XSRF-TOKEN=([^;]+)'));
@@ -41,7 +52,7 @@ export class AuthService {
   async login(credentials: any): Promise<any> {
     try {
       const headers = { 'X-XSRF-TOKEN': this.getCsrfToken() };
-      const response = await axios.post('/login', credentials, { headers });
+      const response = await axios.post(this.loginUrl, credentials, { headers });
       return response.data;
     } catch (error) {
       console.error('Error en el login:', error);
