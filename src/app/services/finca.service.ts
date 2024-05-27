@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import axios from 'axios';
 import { Finca } from '../models/finca';
 import {formatApiUrl} from "../app.config";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FincaService {
+
   private apiUrl = formatApiUrl("fincas");
 
   constructor() { }
@@ -35,10 +37,16 @@ export class FincaService {
     const url = finca.id_finca ? `${this.apiUrl}/${finca.id_finca}` : this.apiUrl;
     const method = finca.id_finca ? 'put' : 'post';
 
+    const headers = {
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    };
+
+    
     return axios({
       method: method,
       url: url,
-      data: finca
+      data: finca,
+      headers: headers
     }).then(response => {
       console.log(`Finca ${finca.id_finca ? 'actualizada' : 'guardada'}:`, response.data);
       return response.data;

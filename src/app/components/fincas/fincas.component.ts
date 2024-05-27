@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { Finca } from '../../models/finca';
@@ -12,6 +12,7 @@ import { FincaService } from '../../services/finca.service';
   styleUrls: ['./fincas.component.css']
 })
 export class FincaComponent implements OnInit {
+
   fincas: Finca[] = [];
   finca: Finca = new Finca();
   editing: boolean = false;
@@ -33,6 +34,7 @@ export class FincaComponent implements OnInit {
   }
 
   resetFinca() {
+    
     this.finca = new Finca(); // Crea una nueva instancia de Finca
     this.editing = false;    // Actualiza el estado de edición
   }

@@ -44,7 +44,8 @@ export class LoginComponent implements OnInit {
         const credentials = this.loginForm.value;
         const response = await this.authService.login(credentials);
         localStorage.setItem('isAuthenticated', 'true');
-        this.router.navigate(['/']);  // Redirigir al usuario a la página principal
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/']);
       } catch (error) {
         console.error('Error en el login:', error);
       }
@@ -76,4 +77,8 @@ export class LoginComponent implements OnInit {
   toggleForms() {
     this.showLoginForm = !this.showLoginForm;
   }
+
+  get_token() {
+    return localStorage.getItem('token');
+}
 }

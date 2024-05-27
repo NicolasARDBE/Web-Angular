@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Agregar Fincas</h1>
+  
+    <!-- Formulario para agregar o editar fincas -->
+    <form (ngSubmit)="saveFinca()">
+      <input type="hidden" [(ngModel)]="finca.id_finca" name="id_finca">
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="finca.nombre" name="nombre" required>
+      </div>
+      <div>
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" [(ngModel)]="finca.precio" name="precio">
+      </div>
+      <div>
+        <label for="municipio">Municipio:</label>
+        <input type="text" id="municipio" [(ngModel)]="finca.municipio" name="municipio">
+      </div>
+      <div>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" [(ngModel)]="finca.descripcion" name="descripcion" class="descripcion-input">
+      </div>
+      <div>
+        <label>Estado de la Finca:</label>
+        <div>
+          <label>
+            <input type="radio" name="estado" [(ngModel)]="finca.activa" value="True">
+            Activa
+          </label>
+          <label>
+            <input type="radio" name="estado" [(ngModel)]="finca.activa" value="False">
+            Inactiva
+          </label>
+        </div>
+      </div>
+
+      <button type="submit">Guardar</button>
+      <button type="button" (click)="resetFinca()">Cancelar</button>
+    </form>
+  </div>
+  

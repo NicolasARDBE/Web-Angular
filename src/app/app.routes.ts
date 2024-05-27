@@ -11,6 +11,8 @@ import { InsertarSolicitudComponent } from './components/solicitud/insertar-soli
 import { ComentarioComponent } from './components/comentario/comentario/comentario.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { AgregarFincaComponent } from './components/fincas/agregar-finca/agregar-finca.component';
+
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, title: 'Login' },
@@ -24,5 +26,7 @@ export const routes: Routes = [
   { path: 'insertar-solicitudes', component: InsertarSolicitudComponent, title: 'Insertar Solicitudes' },
   { path: 'ver-solicitudes', component: SolicitudComponent, title: 'Ver Solicitudes' },
   { path: 'comentarios', component: ComentarioComponent, title: 'Listar Comentarios' },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' }
+  { path: 'agregar-fincas', component: AgregarFincaComponent, title: 'Agregar Fincas' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+
 ];
