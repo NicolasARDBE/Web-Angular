@@ -3,7 +3,7 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -15,27 +15,36 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'WebAngular';
   isAuthenticated = false;
+  userType: string | undefined;
 
-  constructor(private router: Router) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.checkAuthentication();
+  constructor(private router: Router, private authService: AuthService) {
+    this.authService.authChange$.subscribe(isAuthenticated => {
+      this.isAuthenticated = isAuthenticated;
+      if (isAuthenticated) {
+        const user = localStorage.getItem('user');
+        if (user) {
+          const parsedUser = JSON.parse(user);
+          this.userType = parsedUser.tipo;
+        }
+      } else {
+        this.userType = undefined;
       }
+      console.log('Usuario autenticado, tipo:', this.userType);
     });
   }
 
   ngOnInit(): void {
-    this.checkAuthentication();
+    const user = localStorage.getItem('user');
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      this.userType = parsedUser.tipo;
+      this.isAuthenticated = true;
+      console.log('Usuario autenticado, tipo:', this.userType);
+    }
   }
 
-  checkAuthentication(): void {
-    const authStatus = localStorage.getItem('isAuthenticated');
-    this.isAuthenticated = authStatus === 'true';
-  }
-
-  logout() {
-    localStorage.removeItem('isAuthenticated');
-    this.isAuthenticated = false;
+  logout(): void {
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 }

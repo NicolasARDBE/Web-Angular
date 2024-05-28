@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import axios from 'axios';
 import { User } from '../models/user';
 import { formatApiUrl } from '../app.config';
@@ -10,6 +11,9 @@ export class AuthService {
   private arrendatariosUrl = formatApiUrl('arrendatarios/crearArrendatario');
   private arrendadoresUrl = formatApiUrl('arrendadores/crearArrendador');
   private loginUrl = formatApiUrl('jwt/security/autenticar/autenticar-correo-contrasena');
+
+  private authChange = new Subject<boolean>();
+  authChange$ = this.authChange.asObservable();
 
   async fetchCsrfToken(): Promise<void> {
     try {
@@ -53,10 +57,20 @@ export class AuthService {
     try {
       const headers = { 'X-XSRF-TOKEN': this.getCsrfToken() };
       const response = await axios.post(this.loginUrl, credentials, { headers });
+      const { token, usuario } = response.data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(usuario));
+      this.authChange.next(true);
       return response.data;
     } catch (error) {
       console.error('Error en el login:', error);
       throw error;
     }
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.authChange.next(false);
   }
 }

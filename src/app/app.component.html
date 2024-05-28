@@ -2,18 +2,25 @@
 <div *ngIf="isAuthenticated; else loginTemplate">
   <div class="menu-header">Navegación</div>
   <div class="menu-items">
-    <ul>
-      <a routerLink="/" class="menu-item">Inicio</a>
-      <a routerLink="/fincas" class="menu-item">Ver Fincas</a>
-      <a routerLink="/arrendadores" class="menu-item">Ver Arrendadores</a>
-      <a routerLink="/arrendatarios" class="menu-item">Ver Arrendatarios</a>
-      <a routerLink="/comentarios" class="menu-item">Ver Comentarios</a>
-      <a routerLink="/list-arrendador" class="menu-item">Ver lista de Arrendadores</a>
-      <a routerLink="/actualizar-arrendador/:id" class="menu-item">Actualizar Arrendador</a>
-      <a routerLink="/insertar-arrendador" class="menu-item">Insertar Arrendador</a>
-      <a routerLink="/eliminar-arrendador" class="menu-item">Eliminar Arrendador</a>
-      <a (click)="logout()" class="menu-item">Logout</a>
+    <ul *ngIf="userType === 'Arrendador'; else arrendatarioMenu">
+      <li><a routerLink="/" class="menu-item">Inicio</a></li>
+      <li><a routerLink="/mis-fincas" class="menu-item">Mis Fincas</a></li>
+      <li><a routerLink="/agregar-finca" class="menu-item">Agregar Finca</a></li>
+      <li><a routerLink="/mis-comentarios" class="menu-item">Mis Comentarios</a></li>
+      <li><a routerLink="/solicitudes" class="menu-item">Solicitudes</a></li>
+      <li><a routerLink="/actualizar-perfil" class="menu-item">Actualizar Información</a></li>
+      <li><a (click)="logout()" class="menu-item">Logout</a></li>
     </ul>
+    <ng-template #arrendatarioMenu>
+      <ul>
+        <li><a routerLink="/" class="menu-item">Inicio</a></li>
+        <li><a routerLink="/fincas" class="menu-item">Fincas</a></li>
+        <li><a routerLink="/solicitudes" class="menu-item">Mis Solicitudes</a></li>
+        <li><a routerLink="/pagina-pago" class="menu-item">Página de Pago</a></li>
+        <li><a routerLink="/actualizar-perfil" class="menu-item">Actualizar Información</a></li>
+        <li><a (click)="logout()" class="menu-item">Logout</a></li>
+      </ul>
+    </ng-template>
   </div>
   <router-outlet></router-outlet>
 </div>
