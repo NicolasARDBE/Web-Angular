@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { Finca } from '../models/finca';
 import {formatApiUrl} from "../app.config";
 import { HttpClient } from '@angular/common/http';
@@ -15,6 +15,23 @@ export class FincaService {
 
   getAllFincas(): Promise<Finca[]> {
     return axios.get<Finca[]>(this.apiUrl).then(response => {
+      console.log("Fincas recibidas:", response.data);
+      return response.data;
+    }).catch(error => {
+      console.error("Error al obtener las fincas", error);
+      throw error;
+    });
+  }
+
+  getAllFincasArrendadores(): Promise<Finca[]> {
+    const config: AxiosRequestConfig = {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    };
+    this.apiUrl = formatApiUrl("fincas/arrendador");
+    console.log("URL:", this.apiUrl);
+    return axios.get<Finca[]>(this.apiUrl, config).then(response => {
       console.log("Fincas recibidas:", response.data);
       return response.data;
     }).catch(error => {

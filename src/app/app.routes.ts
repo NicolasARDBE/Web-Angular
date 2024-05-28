@@ -10,6 +10,7 @@ import { SolicitudComponent } from './components/solicitud/solicitud.component';
 import { InsertarSolicitudComponent } from './components/solicitud/insertar-solicitud/insertar-solicitud.component';
 import { ComentarioComponent } from './components/comentario/comentario/comentario.component';
 import { LoginComponent } from './components/login/login.component';
+import { FincaArrendadorComponent } from './components/fincas/finca-arrendador/finca-arrendador.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -24,7 +25,7 @@ export const routes: Routes = [
   { path: 'insertar-solicitudes', component: InsertarSolicitudComponent, title: 'Insertar Solicitudes' },
   { path: 'ver-solicitudes', component: SolicitudComponent, title: 'Ver Solicitudes' },
   { path: 'comentarios', component: ComentarioComponent, title: 'Listar Comentarios' },
-  { path: 'mis-fincas', component: FincaComponent, title: 'Mis Fincas' },
+  { path: 'mis-fincas', component: FincaArrendadorComponent, title: 'Mis Fincas' },
   { path: 'agregar-finca', component: InsertarArrendadorComponent, title: 'Agregar Finca' },
   { path: 'mis-comentarios', component: ComentarioComponent, title: 'Mis Comentarios' },
  // { path: 'pagina-pago', component: PagoComponent, title: 'Página de Pago' },
