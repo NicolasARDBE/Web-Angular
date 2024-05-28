@@ -5,6 +5,7 @@ import { Arrendatario } from '../../../models/arrendatario';
 import {ArrendatarioService} from '../../../services/arrendatario.service';
 import { SolicitudService } from '../../../services/solicitud.service';
 import { Solicitud } from '../../../models/solicitud';
+import { Estado } from '../../../enums/estado.enum';
 
 @Component({
   selector: 'app-arrendatario',
@@ -62,7 +63,7 @@ export class ArrendatarioComponent implements OnInit{
     if (id !== null && id !== undefined) {
       const solicitud: Solicitud = new Solicitud(
         null, // ID de la solicitud (se generará en el backend)
-        'Pendiente', // Estado inicial de la solicitud
+        Estado.POR_ACEPTAR, // Estado inicial de la solicitud
         new Date().toISOString(), // Fecha actual en formato ISO string
         2, // ID del arrendatario
         15 // ID de la finca (debes proporcionar el valor correcto si corresponde)

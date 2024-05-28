@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ListArrendadorComponent } from './components/arrendador/list-arrendador/list-arrendador.component';
 import { ActualizarArrendadorComponent } from './components/arrendador/actualizar-arrendador/actualizar-arrendador.component';
 import { FincaComponent } from './components/fincas/fincas.component';
@@ -11,6 +11,8 @@ import { InsertarSolicitudComponent } from './components/solicitud/insertar-soli
 import { ComentarioComponent } from './components/comentario/comentario/comentario.component';
 import { LoginComponent } from './components/login/login.component';
 import { FincaArrendadorComponent } from './components/fincas/finca-arrendador/finca-arrendador.component';
+import { AgregarPagoComponent } from './components/pago/agregar-pago/agregar-pago.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -28,10 +30,16 @@ export const routes: Routes = [
   { path: 'mis-fincas', component: FincaArrendadorComponent, title: 'Mis Fincas' },
   { path: 'agregar-finca', component: InsertarArrendadorComponent, title: 'Agregar Finca' },
   { path: 'mis-comentarios', component: ComentarioComponent, title: 'Mis Comentarios' },
- // { path: 'pagina-pago', component: PagoComponent, title: 'Página de Pago' },
+  { path: 'pagina-pago/:id', component: AgregarPagoComponent, title: 'Página de Pago' },
   { path: 'actualizar-perfil', component: ActualizarArrendadorComponent, title: 'Actualizar Información' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
   { path: 'fincas', component: FincaComponent },
   { path: 'comentarios/:idFinca', component: ComentarioComponent },
   { path: '', redirectTo: '/fincas', pathMatch: 'full' }
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

@@ -1,0 +1,182 @@
+/* finca.component.css */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1, h2 {
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"], input[type="number"], button {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  button {
+    cursor: pointer;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-right: 15px;
+  }
+
+   
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  .hospedaje {
+    margin: 0 30px 68.3px 1px;
+    display: inline-block;
+    align-self: flex-start;
+    overflow-wrap: break-word;
+    font-family: var(--h-1-roboto-24-px-font-family, 'Roboto');
+    font-weight: var(--h-1-roboto-24-px-font-weight, 700);
+    font-size: var(--h-1-roboto-24-px-font-size, 24px);
+    color: var(--secondary-dark-grey, #0056b3);
+  }
+
+  button[type="button"] {
+    background-color: #6c757d;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #5a6268;
+    
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+
+  .imagen_finca {
+    max-width: 400px; /* Máximo ancho de 400px */
+    height: auto; /* Altura automática para mantener la proporción */
+    float: left; /* Alinear a la izquierda */
+    margin-left: -430px; /* Margen izquierdo para separar del contenido */
+    margin-top: 110px;
+    border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    transform: scale(1.05); /* Escala inicial */
+    transition: transform 0.3s ease; /* Transición de la propiedad transform */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.ult_finca:hover,
+.finca5_finca:hover,
+.finca4_finca:hover,
+.otra_finca:hover,
+.iui_finca:hover,
+.imagen_finca:hover {
+    transform: scale(1.1); /* Escala aumentada al pasar el cursor */
+}
+
+  .iui_finca {
+    max-width: 400px; /* Máximo ancho de 500px */
+    height: 310px; /* Altura automática para mantener la proporción */
+    float: left; /* Alinear a la izquierda */
+    margin-left: -940px; /* Margen derecho para separar del contenido */
+    margin-top: 50px;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+
+
+  .otra_finca {
+    max-width: 370px; /* Máximo ancho de 500px */
+    height: 305px; /* Altura automática para mantener la proporción */
+    float: left; /* Alinear a la izquierda */
+    margin-left: 135px; /* Margen derecho para separar del contenido */
+    margin-top: 10px;
+    transform: scale(1.05); /* Escala inicial */
+    transition: transform 0.3s ease;
+    border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+
+  .ult_finca {
+    max-width: 370px; /* Máximo ancho de 500px */
+    height: 305px; /* Altura automática para mantener la proporción */
+    float: left; /* Alinear a la izquierda */
+    margin-left: 665px; /* Margen derecho para separar del contenido */
+    margin-top: -305px;
+    transform: scale(1.05); /* Escala inicial */
+    transition: transform 0.3s ease;
+    border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+
+  .finca4_finca {
+    max-width: 370px; /* Máximo ancho de 500px */
+    height: 315px; /* Altura automática para mantener la proporción */
+    float: left; /* Alinear a la izquierda */
+    margin-left: 665px; /* Margen derecho para separar del contenido */
+    margin-top: -315px;
+
+    transform: scale(1.05); /* Escala inicial */
+    transition: transform 0.3s ease;
+    border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+
+  .finca5_finca {
+    max-width: 370px; /* Máximo ancho de 500px */
+    height: 305px; /* Altura automática para mantener la proporción */
+    float: left; /* Alinear a la izquierda */
+    margin-left: 135px; /* Margen derecho para separar del contenido */
+    margin-top: 60px;
+    
+    border: 2px solid #ccc; /* Borde de 2px sólido gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+
+  li {
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #04090f;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .botones button {
+    margin-right: 10px; /* Ajusta este valor según el espacio que desees entre los botones */
+  }
+  
+
+  
+  label {
+    font-weight: bold;
+  }
+  
+
+  .descripcion-input {
+    height: 20px;
+    width: 300px; /* Establece una altura mínima para evitar que la caja de texto sea demasiado pequeña */
+  }
+  
+  

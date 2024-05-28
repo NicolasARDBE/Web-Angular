@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { Solicitud } from '../models/solicitud';
 import { formatApiUrl } from "../app.config";
 
@@ -12,6 +12,22 @@ export class SolicitudService {
 
   getAllSolicitudes(): Promise<Solicitud[]> {
     return axios.get<Solicitud[]>(this.apiUrl).then(response => {
+      console.log("Solicitudes recibidas:", response.data);
+      return response.data;
+    }).catch(error => {
+      console.error("Error al obtener las solicitudes", error);
+      throw error;
+    });
+  }
+
+  getAllSolicitudesArrendatarios(): Promise<Solicitud[]> {
+    const config: AxiosRequestConfig = {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    };
+    const apiUrlGET = formatApiUrl("solicitudes/arrendatario");
+    return axios.get<Solicitud[]>(apiUrlGET, config).then(response => {
       console.log("Solicitudes recibidas:", response.data);
       return response.data;
     }).catch(error => {

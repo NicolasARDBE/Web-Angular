@@ -8,7 +8,7 @@ import { formatApiUrl } from '../app.config';
 })
 export class PagoService {
 
-  private apiUrl = formatApiUrl("fincas");
+  private apiUrl = formatApiUrl("pagos");
 
   constructor() { }
 
@@ -32,12 +32,13 @@ export class PagoService {
     });
   }
 
-  savePago(pago: Pago): Promise<Pago> {
+  savePago(pago: Pago, idSolicitud: number): Promise<Pago> {
     const url = pago.id_pago ? `${this.apiUrl}/${pago.id_pago}` : this.apiUrl;
     const method = pago.id_pago ? 'put' : 'post';
 
     const headers = {
-      'Authorization': 'Bearer ' + localStorage.getItem('token')
+      'Authorization': 'Bearer ' + localStorage.getItem('token'),
+      'idSolicitud': idSolicitud
     };
 
     
@@ -47,10 +48,10 @@ export class PagoService {
       data: pago,
       headers: headers
     }).then(response => {
-      console.log(`Finca ${pago.id_pago ? 'actualizada' : 'guardada'}:`, response.data);
+      console.log(`Pago ${pago.id_pago ? 'actualizada' : 'guardada'}:`, response.data);
       return response.data;
     }).catch(error => {
-      console.error(`Error al ${pago.id_pago ? 'actualizar' : 'guardar'} la finca`, error);
+      console.error(`Error al ${pago.id_pago ? 'actualizar' : 'guardar'} el pago`, error);
       throw error;
     });
   }
@@ -59,7 +60,7 @@ export class PagoService {
     return axios.delete(`${this.apiUrl}/${id}`).then(() => {
       console.log("Finca eliminada con éxito");
     }).catch(error => {
-      console.error("Error al eliminar la finca", error);
+      console.error("Error al eliminar el pago", error);
       throw error;
     });
   }

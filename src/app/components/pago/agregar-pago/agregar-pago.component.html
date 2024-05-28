@@ -3,6 +3,7 @@
   
     <!-- Formulario para agregar o editar pagos -->
     <form (ngSubmit)="savePago()">
+      <p>Estás a punto de pagar la solicitud con ID: {{ idSolicitud }}</p>
       <input type="hidden" [(ngModel)]="pago.id_pago" name="id_pago">
       <div>
         <label for="banco">Banco:</label>
