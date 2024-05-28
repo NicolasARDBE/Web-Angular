@@ -29,5 +29,8 @@ export const routes: Routes = [
   { path: 'mis-comentarios', component: ComentarioComponent, title: 'Mis Comentarios' },
  // { path: 'pagina-pago', component: PagoComponent, title: 'Página de Pago' },
   { path: 'actualizar-perfil', component: ActualizarArrendadorComponent, title: 'Actualizar Información' },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' }
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'fincas', component: FincaComponent },
+  { path: 'comentarios/:idFinca', component: ComentarioComponent },
+  { path: '', redirectTo: '/fincas', pathMatch: 'full' }
 ];

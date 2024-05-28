@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Solicitud } from '../models/solicitud';
-import {formatApiUrl} from "../app.config";
+import { formatApiUrl } from "../app.config";
 
 @Injectable({
   providedIn: 'root'

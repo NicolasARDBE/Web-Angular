@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Comentario } from '../models/comentario';
-import {formatApiUrl} from "../app.config";
-import {Finca} from "../models/finca";
+import { formatApiUrl } from "../app.config";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComentarioService {
-
   private apiUrl = formatApiUrl("comentarios");
 
   constructor() { }
-
 
   getAllComentarios(): Promise<Comentario[]> {
     return axios.get<Comentario[]>(this.apiUrl).then(response => {
@@ -20,6 +17,16 @@ export class ComentarioService {
       return response.data;
     }).catch(error => {
       console.error("Error al obtener los comentarios", error);
+      throw error;
+    });
+  }
+
+  getComentariosByFinca(idFinca: number): Promise<Comentario[]> {
+    return axios.get<Comentario[]>(`${this.apiUrl}/finca/${idFinca}`).then(response => {
+      console.log(`Comentarios recibidos para finca ${idFinca}:`, response.data);
+      return response.data;
+    }).catch(error => {
+      console.error(`Error al obtener los comentarios para finca ${idFinca}`, error);
       throw error;
     });
   }

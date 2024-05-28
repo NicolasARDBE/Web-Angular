@@ -1,34 +1,5 @@
 <div class="container">
   <h1>Gestión de Fincas</h1>
-
-  <!-- Formulario para agregar o editar fincas -->
-  <form (ngSubmit)="saveFinca()">
-    <input type="hidden" [(ngModel)]="finca.id_finca" name="id_finca">
-    <div>
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" [(ngModel)]="finca.nombre" name="nombre" required>
-    </div>
-    <div>
-      <label for="precio">Precio:</label>
-      <input type="number" id="precio" [(ngModel)]="finca.precio" name="precio">
-    </div>
-    <div>
-      <label for="municipio">Municipio:</label>
-      <input type="text" id="municipio" [(ngModel)]="finca.municipio" name="municipio">
-    </div>
-    <div>
-      <label for="descripcion">Descripción:</label>
-      <input type="text" id="descripcion" [(ngModel)]="finca.descripcion" name="descripcion" class="descripcion-input">
-    </div>
-    <div>
-      <label for="id_arrendador">Arrendador:</label>
-      <input type="number" id="id_arrendador" [(ngModel)]="finca.id_arrendador" name="id_arrendador">
-    </div>
-    
-    <button type="submit">Guardar</button>
-    <button type="button" (click)="resetFinca()">Cancelar</button>
-  </form>
-
   <!-- Lista de fincas -->
   <h2>Lista de Fincas</h2>
   <ul>
@@ -39,8 +10,14 @@
         <p>{{ finca.descripcion }}</p>
         <p>Precio: {{ finca.precio | currency }}</p>
         <p>Ubicación: {{ finca.municipio }}</p>
-        <button (click)="editFinca(finca)">Editar</button>
-        <button (click)="deleteFinca(finca.id_finca)">Eliminar</button>
+        <ng-container *ngIf="userType === 'Arrendatario'; else arrendadorOptions">
+          <button (click)="solicitarFinca(finca)">Solicitar Finca</button>
+          <button (click)="verComentarios(finca)">Comentarios</button>
+        </ng-container>
+        <ng-template #arrendadorOptions>
+          <button (click)="editFinca(finca)">Editar</button>
+          <button (click)="deleteFinca(finca.id_finca)">Eliminar</button>
+        </ng-template>
       </div>
     </li>
   </ul>
