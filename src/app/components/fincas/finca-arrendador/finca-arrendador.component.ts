@@ -47,6 +47,7 @@ export class FincaArrendadorComponent implements OnInit {
   saveFinca() {
     this.fincaService.saveFinca(this.finca).then(() => {
       console.log(localStorage.getItem('token'))
+      this.getFincas(); // Refresca la lista
       this.finca = new Finca(); // Reset the form
       this.editing = false;
     }).catch(error => console.error('Error saving finca:', error));

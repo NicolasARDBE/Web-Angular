@@ -29,9 +29,8 @@ export class FincaService {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
     };
-    this.apiUrl = formatApiUrl("fincas/arrendador");
-    console.log("URL:", this.apiUrl);
-    return axios.get<Finca[]>(this.apiUrl, config).then(response => {
+    const apiUrlGET = formatApiUrl("fincas/arrendador");
+    return axios.get<Finca[]>(apiUrlGET, config).then(response => {
       console.log("Fincas recibidas:", response.data);
       return response.data;
     }).catch(error => {
