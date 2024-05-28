@@ -62,4 +62,10 @@ export class SolicitudComponent {
       this.router.navigate(['/pagina-pago', solicitud.idSolicitud]);
     }
   }
+
+  comentarSolicitud(solicitud: any) {
+    if(solicitud.estado === "FINALIZADA"){
+      this.router.navigate(['/comentarios', solicitud.idSolicitud]);
+    }
+  }
 }

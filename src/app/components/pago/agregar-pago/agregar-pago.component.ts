@@ -46,6 +46,4 @@ export class AgregarPagoComponent implements OnInit {
     this.pago = { ...pago };
     this.editing = true;
   }
-
-  
 }

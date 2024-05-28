@@ -26,15 +26,13 @@ export const routes: Routes = [
   { path: 'arrendatarios', component: ArrendatarioComponent, title: 'Listar Arrendatarios' },
   { path: 'insertar-solicitudes', component: InsertarSolicitudComponent, title: 'Insertar Solicitudes' },
   { path: 'ver-solicitudes', component: SolicitudComponent, title: 'Ver Solicitudes' },
-  { path: 'comentarios', component: ComentarioComponent, title: 'Listar Comentarios' },
   { path: 'mis-fincas', component: FincaArrendadorComponent, title: 'Mis Fincas' },
   { path: 'agregar-finca', component: InsertarArrendadorComponent, title: 'Agregar Finca' },
-  { path: 'mis-comentarios', component: ComentarioComponent, title: 'Mis Comentarios' },
   { path: 'pagina-pago/:id', component: AgregarPagoComponent, title: 'Página de Pago' },
+  { path: 'comentarios/:id', component: ComentarioComponent, title: 'Comentarios' },
   { path: 'actualizar-perfil', component: ActualizarArrendadorComponent, title: 'Actualizar Información' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
   { path: 'fincas', component: FincaComponent },
-  { path: 'comentarios/:idFinca', component: ComentarioComponent },
   { path: '', redirectTo: '/fincas', pathMatch: 'full' }
 ];
 

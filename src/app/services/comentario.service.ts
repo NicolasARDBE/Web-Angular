@@ -21,7 +21,7 @@ export class ComentarioService {
     });
   }
 
-  getComentariosByFinca(idFinca: number): Promise<Comentario[]> {
+  getComentariosBySolicitud(idFinca: number): Promise<Comentario[]> {
     return axios.get<Comentario[]>(`${this.apiUrl}/finca/${idFinca}`).then(response => {
       console.log(`Comentarios recibidos para finca ${idFinca}:`, response.data);
       return response.data;
@@ -31,19 +31,28 @@ export class ComentarioService {
     });
   }
 
-  saveComentario(comentario: Comentario): Promise<Comentario> {
+  saveComentario(comentario: Comentario, idSolicitud: number ): Promise<Comentario> {
     const url = comentario.id_comentario ? `${this.apiUrl}/${comentario.id_comentario}` : this.apiUrl;
     const method = comentario.id_comentario ? 'put' : 'post';
 
+    console.log("Se le envia el idSolicitud: " + idSolicitud);
+
+    const headers = {
+      'Authorization': 'Bearer ' + localStorage.getItem('token'),
+      'idSolicitud': idSolicitud
+    };
+
+    
     return axios({
       method: method,
       url: url,
-      data: comentario
+      data: comentario,
+      headers: headers
     }).then(response => {
       console.log(`Comentario ${comentario.id_comentario ? 'actualizada' : 'guardada'}:`, response.data);
       return response.data;
     }).catch(error => {
-      console.error(`Error al ${comentario.id_comentario ? 'actualizar' : 'guardar'} el comentario`, error);
+      console.error(`Error al ${comentario.id_comentario ? 'actualizar' : 'guardar'} el pago`, error);
       throw error;
     });
   }

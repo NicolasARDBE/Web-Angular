@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ComentarioService } from '../../../services/comentario.service';
 import { Comentario } from '../../../models/comentario';
 
+
 @Component({
   selector: 'app-comentarios',
   standalone: true,
@@ -16,15 +17,17 @@ export class ComentarioComponent implements OnInit {
 
   comentarios: Comentario[] = [];
   comentario: Comentario = new Comentario();
-  idFinca: number | null = null;
+  idSolicitud!: number;
   editing: boolean = false;
 
   constructor(private comentarioService: ComentarioService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
     this.route.params.subscribe(params => {
-      this.idFinca = +params['idFinca'];
-      this.getComentarios();
+      this.idSolicitud = + params['id']; // El '+' convierte el string a número
+      // Ahora puedes usar this.idSolicitud para cargar los datos necesarios para el pago
+      console.log('ID de la solicitud:', this.idSolicitud);
     });
   }
 
@@ -34,20 +37,22 @@ export class ComentarioComponent implements OnInit {
   }
 
   getComentarios() {
-    if (this.idFinca !== null) {
-      this.comentarioService.getComentariosByFinca(this.idFinca).then(data => {
+    if (this.idSolicitud !== null) {
+      this.comentarioService.getComentariosBySolicitud(this.idSolicitud).then(data => {
         this.comentarios = data;
       }).catch(error => console.error('Error fetching comentarios:', error));
     }
   }
 
   saveComentario() {
+
+    console.log("La solicitud: " + this.idSolicitud);
+
     this.comentario.fecha = new Date(); // Asegura que la fecha se establezca correctamente
-    this.comentario.idFinca = this.idFinca;
-    this.comentarioService.saveComentario(this.comentario).then(() => {
-        this.getComentarios();
-        this.comentario = new Comentario();
-        this.editing = false;
+    this.comentarioService.saveComentario(this.comentario, this.idSolicitud).then(() => {
+      console.log(localStorage.getItem('token'))
+      this.comentario = new Comentario(); // Reset the form
+      this.editing = false;
     }).catch(error => console.error('Error saving comentario:', error));
 }
 
